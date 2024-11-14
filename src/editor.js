@@ -6,7 +6,6 @@ import { dropCursor } from "prosemirror-dropcursor"
 import { gapCursor } from "prosemirror-gapcursor"
 import { history } from "prosemirror-history"
 import { keymap } from "prosemirror-keymap"
-// import { MenuItem, icons, menuBar } from "prosemirror-menu"
 import { Schema } from "prosemirror-model"
 import { nodes, marks } from "prosemirror-schema-basic"
 import { addListNodes } from "prosemirror-schema-list"
@@ -22,10 +21,12 @@ import {
   historyMenuItems,
   markMenuItems,
   htmlMenuItem,
+  tooltipMenuItems,
 } from "./menu.js"
 import { noSpellCheck } from "./nospellcheck.js"
 import { typographicPlugin } from "./typographic.js"
 import { crel, createDebouncedBackWriter, parseHTML } from "./utils.js"
+import { tooltipMark } from "./marks/tooltip.js"
 
 const underlineDOM = ["u", 0]
 const strikethroughDOM = ["s", 0]
@@ -88,6 +89,7 @@ export function createEditor(textarea, config) {
           return supDOM
         },
       },
+      tooltip: tooltipMark,
     },
   }
 
@@ -116,6 +118,7 @@ export function createEditor(textarea, config) {
           listMenuItems(schema),
           linkMenuItems(schema),
           markMenuItems(schema),
+          tooltipMenuItems(schema),
           config.history ? historyMenuItems() : null,
           config.html ? htmlMenuItem() : null,
         ].filter(Boolean),

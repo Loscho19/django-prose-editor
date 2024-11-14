@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 14:45+0200\n"
+"POT-Creation-Date: 2024-11-14 15:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: widgets.py:28
+
+#: widgets.py:29
 msgid "URL"
 msgstr "URL"
 
-#: widgets.py:29
+#: widgets.py:30
 msgid "Title"
 msgstr "Titel"
 
-#: widgets.py:30
+#: widgets.py:31
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: widgets.py:31
+#: widgets.py:32
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: widgets.py:33
+msgid "tooltip text"
+msgstr "Tooltip Text"
+
+#: widgets.py:34
+msgid "Placement"
+msgstr "Platzierung"
+
+#: widgets.py:35
+msgid "top"
+msgstr "Oben"
+
+#: widgets.py:36
+msgid "bottom"
+msgstr "Unten"
+
+#: widgets.py:37
+msgid "left"
+msgstr "Links"
+
+#: widgets.py:38
+msgid "right"
+msgstr "Rechts"

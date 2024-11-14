@@ -10,6 +10,7 @@ import {
   insertHorizontalRule,
 } from "./commands.js"
 import { crel, markActive } from "./utils.js"
+import { toggleTooltip } from "./marks/tooltip.js"
 
 export function menuPlugin(items) {
   return new Plugin({
@@ -150,6 +151,19 @@ export function linkMenuItems(schema) {
       active() {
         return false
       },
+    },
+  ]
+}
+
+export function tooltipMenuItems(schema) {
+  const mark = schema.marks.tooltip
+  if (!mark) return []
+
+  return [
+    {
+      command: toggleTooltip,
+      dom: materialButton("quiz", "Tooltip"),
+      active: (state) => markActive(state, mark),
     },
   ]
 }

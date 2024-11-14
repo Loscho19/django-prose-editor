@@ -30,6 +30,12 @@ class ProseEditorWidget(forms.Textarea):
                                 "title": gettext("Title"),
                                 "update": gettext("Update"),
                                 "cancel": gettext("Cancel"),
+                                "tooltip": gettext("tooltip text"),
+                                "placement": gettext("Placement"),
+                                "top": gettext("top"),
+                                "bottom": gettext("bottom"),
+                                "left": gettext("left"),
+                                "right": gettext("right"),
                             }
                         ),
                     },

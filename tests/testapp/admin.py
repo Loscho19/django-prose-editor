@@ -15,7 +15,14 @@ class SanitizedProseEditorModelForm(forms.ModelForm):
         widgets = {
             "description": ProseEditorWidget(
                 config={
-                    "types": ["paragraph", "strong", "em", "link", "heading"],
+                    "types": [
+                        "paragraph",
+                        "strong",
+                        "em",
+                        "link",
+                        "heading",
+                        "tooltip",
+                    ],
                     "history": False,
                     "html": False,
                     "typographic": True,
