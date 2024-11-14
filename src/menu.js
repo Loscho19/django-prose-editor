@@ -2,6 +2,7 @@ import { toggleMark, setBlockType, wrapIn } from "prosemirror-commands"
 import { undo, redo } from "prosemirror-history"
 import { wrapInList } from "prosemirror-schema-list"
 import { Plugin } from "prosemirror-state"
+import { openCustomModal } from "./plugins/customButtons.js"
 
 import {
   addLink,
@@ -181,6 +182,51 @@ export function htmlMenuItem() {
       active: () => false,
     },
   ]
+}
+
+export const customButtonsMenuItems = (buttons) =>
+  buttons.map((button) => ({
+    command: (state, dispatch) => {
+      if (dispatch) {
+        if (button.type === "snippet") {
+          insertSnippet(state, dispatch, button.content)
+        } else if (button.type === "modal") {
+          openCustomModal(state, dispatch, button)
+        }
+      }
+      return true
+    },
+    dom: createCustomButtonDOM(button),
+    active: () => false,
+  }))
+
+const createCustomButtonDOM = (button) => {
+  const dom = crel("span", {
+    className: "prose-menubar__button custom-button",
+    title: button.name,
+  })
+
+  if (button.icon.startsWith("<")) {
+    dom.innerHTML = button.icon
+  } else {
+    dom.className += " material-icons"
+    dom.textContent = button.icon
+  }
+
+  return dom
+}
+
+export const insertSnippet = (state, dispatch, content) => {
+  const tempDiv = document.createElement("div")
+  tempDiv.innerHTML = content.trim()
+
+  const parser = DOMParser.fromSchema(state.schema)
+  const node = parser.parse(tempDiv)
+
+  if (dispatch) {
+    dispatch(state.tr.replaceSelectionWith(node))
+  }
+  return true
 }
 
 class MenuView {

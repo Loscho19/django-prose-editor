@@ -22,6 +22,7 @@ import {
   historyMenuItems,
   markMenuItems,
   htmlMenuItem,
+  customButtonsMenuItems,
 } from "./menu.js"
 import { noSpellCheck } from "./nospellcheck.js"
 import { typographicPlugin } from "./typographic.js"
@@ -118,6 +119,9 @@ export function createEditor(textarea, config) {
           markMenuItems(schema),
           config.history ? historyMenuItems() : null,
           config.html ? htmlMenuItem() : null,
+          config.customButtons
+            ? customButtonsMenuItems(config.customButtons)
+            : null,
         ].filter(Boolean),
       ),
     noSpellCheck(),
