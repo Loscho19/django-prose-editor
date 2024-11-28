@@ -3,15 +3,15 @@ import { trimmedRangeFromSelection } from "../utils.js"
 
 export const tooltipMark = {
   attrs: {
-    "data-text": { default: "" },
+    "data-tooltip-text": { default: "" },
     "data-placement": { default: "" },
   },
   parseDOM: [
     {
-      tag: "tooltip[data-text]",
+      tag: "tooltip[data-tooltip-text]",
       getAttrs(dom) {
         return {
-          "data-text": dom.getAttribute("data-text") || "",
+          "data-tooltip-text": dom.getAttribute("data-tooltip-text") || "",
           "data-placement": dom.getAttribute("data-placement") || "",
         }
       },
@@ -21,7 +21,7 @@ export const tooltipMark = {
     return [
       "tooltip",
       {
-        "data-text": mark.attrs["data-text"],
+        "data-tooltip-text": mark.attrs["data-tooltip-text"],
         "data-placement": mark.attrs["data-placement"],
       },
     ]
@@ -111,7 +111,7 @@ export const toggleTooltip = (state, dispatch) => {
             $from.pos,
             $from.pos + text.nodeSize,
             type.create({
-              "data-text": attrs.tooltip,
+              "data-tooltip-text": attrs.tooltip,
               "data-placement": attrs.placement,
             }),
           )
@@ -125,7 +125,7 @@ export const toggleTooltip = (state, dispatch) => {
                 from,
                 to,
                 type.create({
-                  "data-text": attrs.tooltip,
+                  "data-tooltip-text": attrs.tooltip,
                   "data-placement": attrs.placement,
                 }),
               )

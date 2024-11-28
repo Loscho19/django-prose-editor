@@ -154,8 +154,8 @@ label:empty:has(+ .prose-editor) {
 }
 
 tooltip {
-  background-color: var(--_f);
-  color: var(--_b);
+  background-color: var(--_f) !important;
+  color: var(--_b) !important;
 }
 
 tooltip::before {
@@ -171,5 +171,5 @@ tooltip:hover::before {
 }
 
 tooltip:hover::after {
-  content: "(" attr(data-text) ")]";
+  content: "(" attr(data-tooltip-text) ")]";
 }
